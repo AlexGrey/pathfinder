@@ -7,8 +7,12 @@ public class Program {
         List<Cell> map = new List<Cell>();
 
         //blocked cells
-        //map.Add(new Cell(0, 1, blocked: true));
-        map.Add(new Cell(1, 1, blocked: true));
+        map.Add(new Cell(0, 0, "start"));
+        map.Add(new Cell(0, 2, "finish"));
+        map.Add(new Cell(0, 1, "blocked"));
+        map.Add(new Cell(1, 1, "blocked"));
+        map.Add(new Cell(2, 1, "blocked"));
+        map.Add(new Cell(3, 1, "blocked"));
 
 		for (int x = 0; x < 5; x++) {
 			for (int y = 0; y < 5; y++) {
@@ -18,11 +22,15 @@ public class Program {
 			}
 		}
 
-        foreach (var cell in map) {
-            if (cell.Y == 4) {
-                Console.WriteLine(cell);
-            } else {
-                Console.Write(cell);
+
+        for (int x = 0; x < 5; x++) {
+            for (int y = 0; y < 5; y++) {
+                if (y == 4) {
+                    Console.WriteLine(FindCell(x, y, map));
+                } else {
+                    Console.Write(FindCell(x, y, map));
+                }
+
             }
         }
 

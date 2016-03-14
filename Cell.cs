@@ -8,6 +8,7 @@ public class Cell {
     bool blocked = false;
     bool start = false;
     bool finish = false;
+    bool road = false;
 
     int f;
     int g;
@@ -18,10 +19,23 @@ public class Cell {
         this.y = y;
     }
 
-    public Cell(int x, int y, bool blocked) {
+    public Cell(int x, int y, string type) {
         this.x = x;
         this.y = y;
-        this.blocked = blocked;
+
+        if (type.Equals("blocked")) {
+            this.blocked = true;
+            return;
+        }
+        if (type.Equals("start")) {
+            this.start = true;
+            return;
+        }
+        if (type.Equals("finish")) {
+            this.finish = true;
+            return;
+        }
+
     }
 
     public int X {
@@ -64,6 +78,15 @@ public class Cell {
     public override string ToString() {
         if(this.blocked) {
             return "#";
+        }
+        if(this.road){
+            return "*";
+        }
+        if(this.start){
+            return "O";
+        }
+        if(this.finish){
+            return "X";
         }
         return ".";
     }
